@@ -12,7 +12,8 @@ WildRydes.map = WildRydes.map || {};
         'esri/symbols/TextSymbol',
         'esri/symbols/PictureMarkerSymbol',
         'esri/geometry/support/webMercatorUtils',
-        'dojo/domReady!'
+        'dojo/domReady!',
+        'esri/tasks/Locator'
     ], function requireCallback(
         Map, MapView,
         Graphic, Point, TextSymbol,
