@@ -36,6 +36,13 @@ WildRydes.map = WildRydes.map || {};
                 alert('An error occured when requesting your unicorn:\n' + jqXHR.responseText);
             }
         });
+
+        var iSource = "https://forecast.io/embed/#lat=" + pickupLocation.latitude + "&lon=" + pickupLocation.longitude + "&name=Woot&color=#00aaff";
+        $('<iframe>') // Creates the element
+          .attr('src', iSource) // Sets the attribute spry:region="myDs"
+          .attr('height', 245) // Set the height
+          .attr('width', "100%") // Set the width
+          .appendTo('#id-weather'); // Append to an existing element ID
     }
 
     function completeRequest(result) {
@@ -105,3 +112,4 @@ WildRydes.map = WildRydes.map || {};
         $('#updates').append($('<li>' + text + '</li>'));
     }
 }(jQuery));
+
