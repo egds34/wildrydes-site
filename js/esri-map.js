@@ -96,14 +96,13 @@ WildRydes.map = WildRydes.map || {};
                 });
             });
 
-            function showAddress(address, pt) {
-                view.popup.open({
-                    title:  + Math.round(pt.longitude * 100000)/100000 + ", " + Math.round(pt.latitude * 100000)/100000,
-                    content: address,
-                    location: pt
-                });
-            }            
-        });
+        function showAddress(address, pt) {
+            view.popup.open({
+                title:  + Math.round(pt.longitude * 100000)/100000 + ", " + Math.round(pt.latitude * 100000)/100000,
+                content: address,
+                location: pt
+            });
+        };          
         
         wrMap.animate = function animate(origin, dest, callback) {
             var startTime;
