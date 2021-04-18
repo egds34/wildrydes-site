@@ -72,15 +72,15 @@ WildRydes.map = WildRydes.map || {};
             updateCenter(view.center);
         });
 
+        view.popup.autoOpenEnabled = false;
         view.on('click', function handleViewClick(event) {
             wrMap.selectedPoint = event.mapPoint;
-            view.graphics.remove(pinGraphic);
-            view.graphics.remove(popup);
-            pinGraphic = new Graphic({
-                symbol: pinSymbol,
-                geometry: wrMap.selectedPoint
-            });
-            view.graphics.add(pinGraphic);
+            //view.graphics.remove(pinGraphic);
+            //pinGraphic = new Graphic({
+            //    symbol: pinSymbol,
+            //    geometry: wrMap.selectedPoint
+            //});
+            //view.graphics.add(pinGraphic);
             $(wrMap).trigger('pickupChange');
 
             var lat = Math.round(event.mapPoint.latitude * 1000) / 1000;
