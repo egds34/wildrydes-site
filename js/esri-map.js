@@ -20,7 +20,7 @@ WildRydes.map = WildRydes.map || {};
     ) {
         var wrMap = WildRydes.map;
 
-        var map = new Map({ basemap: 'gray-vector' });
+        var map = new Map({ basemap: 'streets' });
 
         var view = new MapView({
             center: [-122.31, 47.60],
@@ -90,9 +90,9 @@ WildRydes.map = WildRydes.map || {};
             locatorTask.locationToAddress(params)
                 .then(function(response) { // Show the address found
                     const address = response.address;
-                    showAddress(address, evt.mapPoint);
+                    showAddress(address, event.mapPoint);
                 }, function(err) { // Show no address found
-                    showAddress("No address found.", evt.mapPoint);
+                    showAddress("No address found.", event.mapPoint);
                 });
             });
 
