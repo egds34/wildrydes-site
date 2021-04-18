@@ -8,13 +8,13 @@ WildRydes.map = WildRydes.map || {};
         'esri/config',
         'esri/Map',
         'esri/views/MapView',
+        'esri/tasks/Locator',
         'esri/Graphic',
         'esri/geometry/Point',
         'esri/symbols/TextSymbol',
         'esri/symbols/PictureMarkerSymbol',
         'esri/geometry/support/webMercatorUtils',
-        'dojo/domReady!',
-        'esri/tasks/Locator'
+        'dojo/domReady!'
     ], function requireCallback(
         esriConfig, Map, MapView,
         Graphic, Point, TextSymbol,
