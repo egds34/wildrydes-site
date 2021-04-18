@@ -75,6 +75,7 @@ WildRydes.map = WildRydes.map || {};
         view.on('click', function handleViewClick(event) {
             wrMap.selectedPoint = event.mapPoint;
             view.graphics.remove(pinGraphic);
+            view.graphics.remove(popup);
             pinGraphic = new Graphic({
                 symbol: pinSymbol,
                 geometry: wrMap.selectedPoint
@@ -87,7 +88,7 @@ WildRydes.map = WildRydes.map || {};
             view.popup.open({
                 // Set the popup's title to the coordinates of the location
                 title: "Reverse geocode: [" + lon + ", " + lat + "]",
-                location: event.mapPoint // Set the location of the popup to the clicked location
+                location: event.mapPoint // Set the location of the popup to the clicked location         
             });
 
             locatorTask
