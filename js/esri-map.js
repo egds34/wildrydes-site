@@ -91,16 +91,6 @@ WildRydes.map = WildRydes.map || {};
                 location: event.mapPoint // Set the location of the popup to the clicked location         
             });
 
-            locatorTask
-            .locationToAddress(event.mapPoint)
-            .then(function(response) {
-                // If an address is successfully found, show it in the popup's content
-                view.popup.content = response.address;
-            })
-            .catch(function(error) {
-                // If the promise fails and no result is found, show a generic message
-                view.popup.content = "No address was found for this location";
-            });
         });
 
         wrMap.animate = function animate(origin, dest, callback) {
