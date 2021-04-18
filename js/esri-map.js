@@ -88,9 +88,23 @@ WildRydes.map = WildRydes.map || {};
             view.popup.open({
                 // Set the popup's title to the coordinates of the location
                 title: "Reverse geocode: [" + lon + ", " + lat + "]",
-                location: event.mapPoint // Set the location of the popup to the clicked location         
+                location: event.mapPoint // Set the location of the popup to the clicked location      
             });
 
+            var params = {
+                location: event.mapPoint
+            };
+
+            locatorTask
+            .locationToAddress(params)
+            .then(function(response) {
+                // If an address is successfully found, show it in the popup's content
+                view.popup.content = response.address;
+            })
+            .catch(function(error) {
+                // If the promise fails and no result is found, show a generic message
+                view.popup.content = "No address was found for this location";
+            });
         });
 
         wrMap.animate = function animate(origin, dest, callback) {
