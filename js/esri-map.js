@@ -5,10 +5,10 @@ WildRydes.map = WildRydes.map || {};
 
 (function esriMapScopeWrapper($) {
     require([
+        'esri/tasks/Locator',
         'esri/config',
         'esri/Map',
-        'esri/views/MapView',
-        'esri/tasks/Locator',
+        'esri/views/MapView',       
         'esri/Graphic',
         'esri/geometry/Point',
         'esri/symbols/TextSymbol',
@@ -33,9 +33,9 @@ WildRydes.map = WildRydes.map || {};
             zoom: 12
         });
 
-        const locatorTask = new esri.Locator ({
+        const locatorTask = new Locator ({
             url: "http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"
-        })
+        });
 
         var pinSymbol = new TextSymbol({
             color: '#f50856',
