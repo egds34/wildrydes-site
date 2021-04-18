@@ -20,7 +20,7 @@ WildRydes.map = WildRydes.map || {};
     ) {
         var wrMap = WildRydes.map;
 
-        var map = new Map({ basemap: 'arcgis-navigation' });
+        var map = new Map({ basemap: 'streets' });
 
         var view = new MapView({
             center: [-122.31, 47.60],
