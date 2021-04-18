@@ -17,7 +17,7 @@ WildRydes.map = WildRydes.map || {};
     ], function requireCallback(
         Map, MapView,
         Graphic, Point, TextSymbol,
-        PictureMarkerSymbol, webMercatorUtils
+        PictureMarkerSymbol, webMercatorUtils, Locator
     ) {
         var wrMap = WildRydes.map;
 
