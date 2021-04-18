@@ -15,13 +15,17 @@ WildRydes.map = WildRydes.map || {};
         'esri/geometry/support/webMercatorUtils',
         'dojo/domReady!'
     ], function requireCallback(
-        esriConfig, Map, MapView,
+        Locator, Map, MapView,
         Graphic, Point, TextSymbol,
-        PictureMarkerSymbol, webMercatorUtils, Locator
+        PictureMarkerSymbol, webMercatorUtils
     ) {
         //esriConfig.apiKey = "AAPK3927cbe91e6e47b4b92d96e722b1bf36dR9LLwn5L2XycTKb6--zMnWFFsmTGnNzvd6fHWdI3DTLlQG7IjUMRObN_Dejx_b3";
 
         var wrMap = WildRydes.map;
+
+        var locatorTask = new Locator({
+            url: "http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"
+        });
 
         var map = new Map({ basemap: 'streets' });
 
@@ -32,9 +36,7 @@ WildRydes.map = WildRydes.map || {};
             zoom: 12
         });
 
-        const locatorTask = new Locator ({
-            url: "http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"
-        });
+        
 
         var pinSymbol = new TextSymbol({
             color: '#f50856',
