@@ -33,7 +33,7 @@ WildRydes.map = WildRydes.map || {};
             zoom: 12
         });
 
-        const locatorTask = new Locator ({
+        const locatorTask = new esri.Locator ({
             url: "http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"
         })
 
