@@ -16,7 +16,7 @@ WildRydes.map = WildRydes.map || {};
         'dojo/domReady!',
         'esri/tasks/Locator'
     ], function requireCallback(
-        Map, MapView,
+        esriConfig, Map, MapView,
         Graphic, Point, TextSymbol,
         PictureMarkerSymbol, webMercatorUtils, Locator
     ) {
