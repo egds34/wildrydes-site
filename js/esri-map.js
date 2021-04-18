@@ -6,7 +6,6 @@ WildRydes.map = WildRydes.map || {};
 (function esriMapScopeWrapper($) {
     require([
         'esri/tasks/Locator',
-        'esri/config',
         'esri/Map',
         'esri/views/MapView',       
         'esri/Graphic',
@@ -20,7 +19,7 @@ WildRydes.map = WildRydes.map || {};
         Graphic, Point, TextSymbol,
         PictureMarkerSymbol, webMercatorUtils, Locator
     ) {
-        esriConfig.apiKey = "AAPK3927cbe91e6e47b4b92d96e722b1bf36dR9LLwn5L2XycTKb6--zMnWFFsmTGnNzvd6fHWdI3DTLlQG7IjUMRObN_Dejx_b3";
+        //esriConfig.apiKey = "AAPK3927cbe91e6e47b4b92d96e722b1bf36dR9LLwn5L2XycTKb6--zMnWFFsmTGnNzvd6fHWdI3DTLlQG7IjUMRObN_Dejx_b3";
 
         var wrMap = WildRydes.map;
 
