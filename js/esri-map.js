@@ -20,7 +20,7 @@ WildRydes.map = WildRydes.map || {};
     ) {
         var wrMap = WildRydes.map;
 
-        var map = new Map({ basemap: 'gray-vector' });
+        var map = new Map({ basemap: 'arcgis-navigation' });
 
         var view = new MapView({
             center: [-122.31, 47.60],
@@ -72,41 +72,39 @@ WildRydes.map = WildRydes.map || {};
             updateCenter(view.center);
         });
 
+        const locatorTask = new Locator ({
+            url: "http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"
+        })
+
         view.popup.autoOpenEnabled = false;
         view.on('click', function handleViewClick(event) {
             wrMap.selectedPoint = event.mapPoint;
-            view.graphics.remove(popup);
-            //pinGraphic = new Graphic({
-            //    symbol: pinSymbol,
-            //    geometry: wrMap.selectedPoint
-            //});
-            //view.graphics.add(pinGraphic);
-            $(wrMap).trigger('pickupChange');
+            //view.graphics.remove(popup);
 
-            var lat = Math.round(event.mapPoint.latitude * 1000) / 1000;
-            var lon = Math.round(event.mapPoint.longitude * 1000) / 1000;
-            view.popup.open({
-                // Set the popup's title to the coordinates of the location
-                title: "Reverse geocode: [" + lon + ", " + lat + "]",
-                location: event.mapPoint // Set the location of the popup to the clicked location      
-            });
-
-            var params = {
+            const params = {
                 location: event.mapPoint
             };
 
-            locatorTask
-            .locationToAddress(params)
-            .then(function(response) {
-                // If an address is successfully found, show it in the popup's content
-                view.popup.content = response.address;
-            })
-            .catch(function(error) {
-                // If the promise fails and no result is found, show a generic message
-                view.popup.content = "No address was found for this location";
-            });
-        });
+            $(wrMap).trigger('pickupChange');    
 
+            locatorTask.locationToAddress(params)
+                .then(function(response) { // Show the address found
+                    const address = response.address;
+                    showAddress(address, evt.mapPoint);
+                }, function(err) { // Show no address found
+                    showAddress("No address found.", evt.mapPoint);
+                });
+            });
+
+            function showAddress(address, pt) {
+                view.popup.open({
+                    title:  + Math.round(pt.longitude * 100000)/100000 + ", " + Math.round(pt.latitude * 100000)/100000,
+                    content: address,
+                    location: pt
+                });
+            }            
+        });
+        
         wrMap.animate = function animate(origin, dest, callback) {
             var startTime;
             var step = function animateFrame(timestamp) {
