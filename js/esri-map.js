@@ -75,7 +75,7 @@ WildRydes.map = WildRydes.map || {};
         view.popup.autoOpenEnabled = false;
         view.on('click', function handleViewClick(event) {
             wrMap.selectedPoint = event.mapPoint;
-            //view.graphics.remove(pinGraphic);
+            view.graphics.remove(popup);
             //pinGraphic = new Graphic({
             //    symbol: pinSymbol,
             //    geometry: wrMap.selectedPoint
