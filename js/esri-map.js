@@ -73,10 +73,6 @@ WildRydes.map = WildRydes.map || {};
             updateCenter(view.center);
         });
 
-        const locatorTask = new Locator ({
-            url: "http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"
-        })
-
         view.popup.autoOpenEnabled = false;
         view.on('click', function handleViewClick(event) {
             wrMap.selectedPoint = event.mapPoint;
