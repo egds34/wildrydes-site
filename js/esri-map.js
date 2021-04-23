@@ -18,8 +18,7 @@ WildRydes.map = WildRydes.map || {};
     ], function requireCallback(
         esriConfig, Map, MapView, Locator,
         Graphic, Point, TextSymbol,
-        PictureMarkerSymbol, webMercatorUtils,
-        IMB, kernel
+        PictureMarkerSymbol, webMercatorUtils
     ) {
 
         esriConfig.apiKey = "AAPK3927cbe91e6e47b4b92d96e722b1bf36dR9LLwn5L2XycTKb6--zMnWFFsmTGnNzvd6fHWdI3DTLlQG7IjUMRObN_Dejx_b3";
@@ -37,7 +36,8 @@ WildRydes.map = WildRydes.map || {};
         });
 
         var locatorTask = new Locator({
-            url: "http://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer"
+            //url: "http://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer"
+            url: "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"
         });
 
         var pinSymbol = new TextSymbol({
