@@ -33,7 +33,8 @@ WildRydes.map = WildRydes.map || {};
             container: 'map',
             map: map,
             //center: [33.23036,-97.132902],
-            zoom: 12
+            zoom: 12,
+            sliderPosition: "bottom-right",
         });
 
         var locatorTask = new Locator({
@@ -43,7 +44,8 @@ WildRydes.map = WildRydes.map || {};
 
         const searchWidget = new Search({
             view: view,
-            popupEnabled: false
+            popupEnabled: false,
+            resultGraphicEnabled: false
         });
         // Adds the search widget below other elements in
         // the top left corner of the view
