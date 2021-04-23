@@ -42,7 +42,8 @@ WildRydes.map = WildRydes.map || {};
         });
 
         const searchWidget = new Search({
-            view: view
+            view: view,
+            popupEnabled: false
         });
         // Adds the search widget below other elements in
         // the top left corner of the view
