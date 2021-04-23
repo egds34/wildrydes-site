@@ -9,6 +9,7 @@ WildRydes.map = WildRydes.map || {};
         'esri/Map',
         'esri/views/MapView',
         'esri/tasks/Locator',
+        'esri/widgets/Search',
         'esri/Graphic',
         'esri/geometry/Point',
         'esri/symbols/TextSymbol',
@@ -38,6 +39,16 @@ WildRydes.map = WildRydes.map || {};
         var locatorTask = new Locator({
             //url: "http://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer"
             url: "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"
+        });
+
+        const searchWidget = new Search({
+            view: view
+        });
+        // Adds the search widget below other elements in
+        // the top left corner of the view
+        view.ui.add(searchWidget, {
+            position: "top-middle",
+            index: 2
         });
 
         var pinSymbol = new TextSymbol({
