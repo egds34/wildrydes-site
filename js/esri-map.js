@@ -48,7 +48,7 @@ WildRydes.map = WildRydes.map || {};
         // the top left corner of the view
         view.ui.add(searchWidget, {
             position: "top-left",
-            index: 2
+            index: -1
         });
 
         var pinSymbol = new TextSymbol({
