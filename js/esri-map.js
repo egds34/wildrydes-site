@@ -5,8 +5,8 @@ WildRydes.map = WildRydes.map || {};
 
 (function esriMapScopeWrapper($) {
     require([
-        'esri/tasks/Locator',
         'esri/Map',
+        'esri/tasks/Locator',
         'esri/views/MapView',       
         'esri/Graphic',
         'esri/geometry/Point',
@@ -15,7 +15,7 @@ WildRydes.map = WildRydes.map || {};
         'esri/geometry/support/webMercatorUtils',
         'dojo/domReady!'
     ], function requireCallback(
-        Locator, Map, MapView,
+         Map, Locator, MapView,
         Graphic, Point, TextSymbol,
         PictureMarkerSymbol, webMercatorUtils
     ) {
@@ -23,11 +23,11 @@ WildRydes.map = WildRydes.map || {};
 
         var wrMap = WildRydes.map;
 
+        var map = new Map({ basemap: 'streets' });
+
         var locatorTask = new Locator({
             url: "http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"
         });
-
-        var map = new Map({ basemap: 'streets' });
 
         var view = new MapView({
             center: [-122.31, 47.60],
