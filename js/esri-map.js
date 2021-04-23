@@ -8,8 +8,8 @@ WildRydes.map = WildRydes.map || {};
         "esri/config",
         'esri/Map',
         'esri/views/MapView',
-        'esri/tasks/Locator',
-        "esri/widgets/Locate",
+        'esri/widgets/Locate',
+        'esri/tasks/Locator',    
         'esri/widgets/Search',
         'esri/Graphic',
         'esri/geometry/Point',
@@ -18,7 +18,7 @@ WildRydes.map = WildRydes.map || {};
         'esri/geometry/support/webMercatorUtils',
         'dojo/domReady!'
     ], function requireCallback(
-        esriConfig, Map, MapView, Locator, Locate,
+        esriConfig, Map, MapView, Locate, Locator, 
         Search, Graphic, Point, TextSymbol,
         PictureMarkerSymbol, webMercatorUtils
     ) {
@@ -29,7 +29,7 @@ WildRydes.map = WildRydes.map || {};
 
         var map = new Map({
             basemap: 'streets',
-            slider: false
+            //slider: false
         });
 
         var view = new MapView({
@@ -40,12 +40,6 @@ WildRydes.map = WildRydes.map || {};
             zoom: 12
         });
 
-        var locatorTask = new Locator({
-            //url: "http://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer"
-            url: "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"
-        });
-
-
         const locate = new Locate({
             view: view,
             useHeadingEnabled: false,
@@ -55,6 +49,14 @@ WildRydes.map = WildRydes.map || {};
             }
         });
         view.ui.add(locate, "top-left");
+
+        var locatorTask = new Locator({
+            //url: "http://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer"
+            url: "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"
+        });
+
+
+        
 
         const searchWidget = new Search({
             view: view,
