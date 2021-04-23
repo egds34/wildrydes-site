@@ -85,7 +85,9 @@ WildRydes.map = WildRydes.map || {};
         view.popup.autoOpenEnabled = false;
         view.on('click', function handleViewClick(event) {
             wrMap.selectedPoint = event.mapPoint;
-            
+
+            view.popup.close();
+
             var pnt = new Point({
                 x: event.mapPoint.longitude,
                 y: event.mapPoint.latitude
@@ -97,6 +99,7 @@ WildRydes.map = WildRydes.map || {};
                 .then(function(response) { //Show the address found
                     const address = response.address;
                     console.log(address)
+                    addressGlobal = response.address.LongLabel;
                     showAddress(address, event.mapPoint);
                 }, function(err) { // Show no address found
                     showAddress("No address found.", event.mapPoint);
@@ -105,8 +108,8 @@ WildRydes.map = WildRydes.map || {};
 
         function showAddress(address, pt) {
             view.popup.open({
-                title:  address.City + '/n' + address.Region,
-                content: address.LongLabel + '\n\n' + Math.round(pt.longitude * 100000)/100000 + ", " + Math.round(pt.latitude * 100000)/100000,
+                title:  address.City + ', ' + address.Region,
+                content: address.LongLabel,
                 location: pt
             });
         };          
