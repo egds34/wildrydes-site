@@ -60,7 +60,7 @@ WildRydes.map = WildRydes.map || {};
         var token = {
             "server": "http://www.arcgis.com/sharing/rest",
             "userId": "egds34",
-            "token": "AAPK3927cbe91e6e47b4b92d96e722b1bf36dR9LLwn5L2XycTKb6--zMnWFFsmTGnNzvd6fHWdI3DTLlQG7IjUMRObN_Dejx_b3",
+            "token": "eeBiDBNNbMCTPHLeA1JptJQyaWxkXL07gRmi23tBhiI2nA3PKxRc8smakV8SOqIowrwS6TiFK6_lfkjSFL0nRIJThzEBSqW3BdNy89q-cMeInX1CW2mOYIET9vYlkBhe1lTmp0jAaCrBQFFq-GwSZw..",
             "ssl": false,
             "expires": 7200
         };
