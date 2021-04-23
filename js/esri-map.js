@@ -43,6 +43,11 @@ WildRydes.map = WildRydes.map || {};
         const locate = new Locate({
             view: view,
             useHeadingEnabled: false,
+            goToOverride: function(view, options) {
+                options.target.scale = 1500;
+                console.log(options.target);
+                return view.goTo(options.target);
+              }
         });
         view.ui.add(locate, "top-left");
 
@@ -50,9 +55,6 @@ WildRydes.map = WildRydes.map || {};
             //url: "http://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer"
             url: "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"
         });
-
-
-        
 
         const searchWidget = new Search({
             view: view,
