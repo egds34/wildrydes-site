@@ -14,8 +14,6 @@ WildRydes.map = WildRydes.map || {};
         'esri/symbols/TextSymbol',
         'esri/symbols/PictureMarkerSymbol',
         'esri/geometry/support/webMercatorUtils',
-        'esri/IdentityManagerBase',
-        'esri/kernel',
         'dojo/domReady!'
     ], function requireCallback(
         esriConfig, Map, MapView, Locator,
@@ -56,15 +54,6 @@ WildRydes.map = WildRydes.map || {};
             width: '25px',
             height: '25px'
         });
-
-        var token = {
-            "server": "http://www.arcgis.com/sharing/rest",
-            "userId": "egds34",
-            "token": "eeBiDBNNbMCTPHLeA1JptJQyaWxkXL07gRmi23tBhiI2nA3PKxRc8smakV8SOqIowrwS6TiFK6_lfkjSFL0nRIJThzEBSqW3BdNy89q-cMeInX1CW2mOYIET9vYlkBhe1lTmp0jAaCrBQFFq-GwSZw..",
-            "ssl": false,
-            "expires": 7200
-        };
-        kernel.id.registerToken(token);
 
         var pinGraphic;
         var unicornGraphic;
