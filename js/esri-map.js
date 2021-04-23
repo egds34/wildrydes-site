@@ -93,7 +93,7 @@ WildRydes.map = WildRydes.map || {};
             })
             $(wrMap).trigger('pickupChange');    
 
-            console.log(event.mapPoint);
+            console.log(event.mapPoint[0]);
 
             locatorTask.locationToAddress(pnt)
                 .then(function(response) { // Show the address found
