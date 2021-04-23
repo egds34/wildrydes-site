@@ -96,14 +96,12 @@ WildRydes.map = WildRydes.map || {};
 
         view.popup.autoOpenEnabled = false;
 
-        search.on('search-complete', function (result) {
+        Search.on('search-complete', function (result) {
             map.emit('click', { mapPoint: results[0].results[0].feature.geometry });
         });
 
         view.on('click', function handleViewClick(event) {
             wrMap.selectedPoint = event.mapPoint;
-
-
 
             var pnt = new Point({
                 x: event.mapPoint.longitude,
