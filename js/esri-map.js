@@ -5,6 +5,7 @@ WildRydes.map = WildRydes.map || {};
 
 (function esriMapScopeWrapper($) {
     require([
+        "esri/config",
         'esri/Map',
         'esri/views/MapView', 
         'esri/tasks/Locator',      
@@ -15,13 +16,13 @@ WildRydes.map = WildRydes.map || {};
         'esri/geometry/support/webMercatorUtils',
         'dojo/domReady!'
     ], function requireCallback(
-        Map, MapView, Locator,
+        esriConfig, Map, MapView, Locator,
         Graphic, Point, TextSymbol,
         PictureMarkerSymbol, webMercatorUtils
     ) {
         var wrMap = WildRydes.map;
 
-        //esriConfig.apiKey = "AAPK3927cbe91e6e47b4b92d96e722b1bf36dR9LLwn5L2XycTKb6--zMnWFFsmTGnNzvd6fHWdI3DTLlQG7IjUMRObN_Dejx_b3";
+        esriConfig.apiKey = "AAPK3927cbe91e6e47b4b92d96e722b1bf36dR9LLwn5L2XycTKb6--zMnWFFsmTGnNzvd6fHWdI3DTLlQG7IjUMRObN_Dejx_b3";
 
         var map = new Map({ basemap: 'streets' });
 
@@ -29,7 +30,7 @@ WildRydes.map = WildRydes.map || {};
             center: [-122.31, 47.60],
             container: 'map',
             map: map,
-            center: [33.23036,-97.132902],
+            //center: [33.23036,-97.132902],
             zoom: 12
         });
 
@@ -92,7 +93,7 @@ WildRydes.map = WildRydes.map || {};
 
             $(wrMap).trigger('pickupChange');    
 
-            locatorTask.locationToAddress(pnt, 100)
+            locatorTask.locationToAddress(pnt)
                 .then(function(response) { //Show the address found
                     const address = response.address;
                     console.log(address)
