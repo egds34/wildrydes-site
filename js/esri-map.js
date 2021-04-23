@@ -97,10 +97,13 @@ WildRydes.map = WildRydes.map || {};
         view.popup.autoOpenEnabled = false;
 
         searchWidget.on('search-complete', function (result) {
-            view.emit('click', { mapPoint: results[0].results[0].feature.geometry });
+            const mp = result.results[0].results[0].feature.geometry;
+            clickListener({mapPoint: mp});
         });
 
-        view.on('click', function handleViewClick(event) {
+        view.on('click', clickListener);
+
+        function clickListener(event){
             wrMap.selectedPoint = event.mapPoint;
 
             var pnt = new Point({
@@ -119,7 +122,7 @@ WildRydes.map = WildRydes.map || {};
                 }, function (err) { // Show no address found
                     showAddress("No address found.", event.mapPoint);
                 });
-        });
+        };
 
         function showAddress(address, pt) {
             view.popup.open({
