@@ -9,6 +9,7 @@ WildRydes.map = WildRydes.map || {};
         'esri/Map',
         'esri/views/MapView',
         'esri/tasks/Locator',
+        "esri/widgets/Locate",
         'esri/widgets/Search',
         'esri/Graphic',
         'esri/geometry/Point',
@@ -26,9 +27,9 @@ WildRydes.map = WildRydes.map || {};
 
         var wrMap = WildRydes.map;
 
-        var map = new Map({ 
+        var map = new Map({
             basemap: 'streets',
-            sliderPosition: "bottom-right"
+            slider: false
         });
 
         var view = new MapView({
@@ -36,13 +37,24 @@ WildRydes.map = WildRydes.map || {};
             container: 'map',
             map: map,
             //center: [33.23036,-97.132902],
-            zoom: 12 
+            zoom: 12
         });
 
         var locatorTask = new Locator({
             //url: "http://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer"
             url: "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"
         });
+
+
+        const locate = new Locate({
+            view: view,
+            useHeadingEnabled: false,
+            goToOverride: function (view, options) {
+                options.target.scale = 1500;
+                return view.goTo(options.target);
+            }
+        });
+        view.ui.add(locate, "top-left");
 
         const searchWidget = new Search({
             view: view,
@@ -103,12 +115,12 @@ WildRydes.map = WildRydes.map || {};
 
         searchWidget.on('search-complete', function (result) {
             const mp = result.results[0].results[0].feature.geometry;
-            clickListener({mapPoint: mp});
+            clickListener({ mapPoint: mp });
         });
 
         view.on('click', clickListener);
 
-        function clickListener(event){
+        function clickListener(event) {
             wrMap.selectedPoint = event.mapPoint;
 
             var pnt = new Point({
