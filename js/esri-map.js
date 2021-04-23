@@ -84,16 +84,12 @@ WildRydes.map = WildRydes.map || {};
             wrMap.selectedPoint = event.mapPoint;
             //view.graphics.remove(popup);
 
-            const params = {
-                location: event.mapPoint
-            };
             var pnt = new Point({
-                x: 41.640,
-                y: -73.376
+                x: event.mapPoint.x,
+                y: event.mapPoint.y
             })
+            
             $(wrMap).trigger('pickupChange');    
-
-            console.log(event.mapPoint[0]);
 
             locatorTask.locationToAddress(pnt)
                 .then(function(response) { // Show the address found
