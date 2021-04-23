@@ -18,7 +18,7 @@ WildRydes.map = WildRydes.map || {};
         'esri/geometry/support/webMercatorUtils',
         'dojo/domReady!'
     ], function requireCallback(
-        esriConfig, Map, MapView, Locator,
+        esriConfig, Map, MapView, Locator, Locate,
         Search, Graphic, Point, TextSymbol,
         PictureMarkerSymbol, webMercatorUtils
     ) {
