@@ -7,18 +7,21 @@ WildRydes.map = WildRydes.map || {};
     require([
         "esri/config",
         'esri/Map',
-        'esri/views/MapView', 
-        'esri/tasks/Locator',      
+        'esri/views/MapView',
+        'esri/tasks/Locator',
         'esri/Graphic',
         'esri/geometry/Point',
         'esri/symbols/TextSymbol',
         'esri/symbols/PictureMarkerSymbol',
         'esri/geometry/support/webMercatorUtils',
+        'esri/IdentityManagerBase',
+        'esri/kernel',
         'dojo/domReady!'
     ], function requireCallback(
         esriConfig, Map, MapView, Locator,
         Graphic, Point, TextSymbol,
-        PictureMarkerSymbol, webMercatorUtils
+        PictureMarkerSymbol, webMercatorUtils,
+        IMB, kernel
     ) {
 
         esriConfig.apiKey = "AAPK3927cbe91e6e47b4b92d96e722b1bf36dR9LLwn5L2XycTKb6--zMnWFFsmTGnNzvd6fHWdI3DTLlQG7IjUMRObN_Dejx_b3";
@@ -54,6 +57,15 @@ WildRydes.map = WildRydes.map || {};
             height: '25px'
         });
 
+        var token = {
+            "server": "http://www.arcgis.com/sharing/rest",
+            "userId": "egds34",
+            "token": "AAPK3927cbe91e6e47b4b92d96e722b1bf36dR9LLwn5L2XycTKb6--zMnWFFsmTGnNzvd6fHWdI3DTLlQG7IjUMRObN_Dejx_b3",
+            "ssl": false,
+            "expires": 7200
+        };
+        kernel.id.registerToken(token);
+
         var pinGraphic;
         var unicornGraphic;
 
@@ -86,34 +98,34 @@ WildRydes.map = WildRydes.map || {};
         view.on('click', function handleViewClick(event) {
             wrMap.selectedPoint = event.mapPoint;
 
-            view.popup.close();
+
 
             var pnt = new Point({
                 x: event.mapPoint.longitude,
                 y: event.mapPoint.latitude
             })
 
-            $(wrMap).trigger('pickupChange');    
+            $(wrMap).trigger('pickupChange');
 
             locatorTask.locationToAddress(pnt)
-                .then(function(response) { //Show the address found
+                .then(function (response) { //Show the address found
                     const address = response.address;
                     console.log(address)
                     addressGlobal = response.address.LongLabel;
                     showAddress(address, event.mapPoint);
-                }, function(err) { // Show no address found
+                }, function (err) { // Show no address found
                     showAddress("No address found.", event.mapPoint);
                 });
-            });
+        });
 
         function showAddress(address, pt) {
             view.popup.open({
-                title:  address.City + ', ' + address.Region,
+                title: address.City + ', ' + address.Region,
                 content: address.LongLabel,
                 location: pt
             });
-        };          
-        
+        };
+
         wrMap.animate = function animate(origin, dest, callback) {
             var startTime;
             var step = function animateFrame(timestamp) {
@@ -148,6 +160,7 @@ WildRydes.map = WildRydes.map || {};
 
         wrMap.unsetLocation = function unsetLocation() {
             view.graphics.remove(pinGraphic);
+            view.popup.close();
         };
     });
 }(jQuery));
