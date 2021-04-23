@@ -85,7 +85,7 @@ WildRydes.map = WildRydes.map || {};
         view.popup.autoOpenEnabled = false;
         view.on('click', function handleViewClick(event) {
             wrMap.selectedPoint = event.mapPoint;
-            view.graphics.remove(popup);
+            map.infoWindow.clearFeatures();
 
             var pnt = new Point({
                 x: event.mapPoint.longitude,
