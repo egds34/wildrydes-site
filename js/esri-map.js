@@ -86,12 +86,13 @@ WildRydes.map = WildRydes.map || {};
 
             var pnt = new Point({
                 x: event.mapPoint.x,
-                y: event.mapPoint.y
+                y: event.mapPoint.y,
+                spatialReference: new SpatialReference({ wkid: 4326 })
             })
 
             $(wrMap).trigger('pickupChange');    
 
-            locatorTask.locationToAddress(pnt)
+            locatorTask.locationToAddress(pnt, 100)
                 .then(function(response) { //Show the address found
                     const address = response.address;
                     console.log(address)
