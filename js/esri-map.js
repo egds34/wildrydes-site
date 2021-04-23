@@ -96,7 +96,7 @@ WildRydes.map = WildRydes.map || {};
 
         view.popup.autoOpenEnabled = false;
 
-        Search.on('search-complete', function (result) {
+        searchWidget.on('search-complete', function (result) {
             map.emit('click', { mapPoint: results[0].results[0].feature.geometry });
         });
 
