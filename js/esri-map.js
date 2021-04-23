@@ -43,10 +43,6 @@ WildRydes.map = WildRydes.map || {};
         const locate = new Locate({
             view: view,
             useHeadingEnabled: false,
-            goToOverride: function (view, options) {
-                options.target.scale = 1500;
-                return view.goTo(options.target);
-            }
         });
         view.ui.add(locate, "top-left");
 
@@ -119,6 +115,8 @@ WildRydes.map = WildRydes.map || {};
             const mp = result.results[0].results[0].feature.geometry;
             clickListener({ mapPoint: mp });
         });
+
+        locate.on('locate', clickListener)
 
         view.on('click', clickListener);
 
