@@ -88,12 +88,13 @@ WildRydes.map = WildRydes.map || {};
                 x: event.mapPoint.x,
                 y: event.mapPoint.y
             })
-            
+
             $(wrMap).trigger('pickupChange');    
 
             locatorTask.locationToAddress(pnt)
-                .then(function(response) { // Show the address found
+                .then(function(response) { //Show the address found
                     const address = response.address;
+                    console.log(address)
                     showAddress(address, event.mapPoint);
                 }, function(err) { // Show no address found
                     showAddress("No address found.", event.mapPoint);
