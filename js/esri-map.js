@@ -20,9 +20,10 @@ WildRydes.map = WildRydes.map || {};
         Graphic, Point, TextSymbol,
         PictureMarkerSymbol, webMercatorUtils
     ) {
-        var wrMap = WildRydes.map;
 
         esriConfig.apiKey = "AAPK3927cbe91e6e47b4b92d96e722b1bf36dR9LLwn5L2XycTKb6--zMnWFFsmTGnNzvd6fHWdI3DTLlQG7IjUMRObN_Dejx_b3";
+
+        var wrMap = WildRydes.map;
 
         var map = new Map({ basemap: 'streets' });
 
@@ -84,7 +85,7 @@ WildRydes.map = WildRydes.map || {};
         view.popup.autoOpenEnabled = false;
         view.on('click', function handleViewClick(event) {
             wrMap.selectedPoint = event.mapPoint;
-            //view.graphics.remove(popup);
+            view.graphics.remove(popup);
 
             var pnt = new Point({
                 x: event.mapPoint.longitude,
@@ -105,8 +106,8 @@ WildRydes.map = WildRydes.map || {};
 
         function showAddress(address, pt) {
             view.popup.open({
-                title:  + Math.round(pt.longitude * 100000)/100000 + ", " + Math.round(pt.latitude * 100000)/100000,
-                content: address.LongLabel,
+                title:  address.City + '/n' + address.Region,
+                content: address.LongLabel + '\n\n' + Math.round(pt.longitude * 100000)/100000 + ", " + Math.round(pt.latitude * 100000)/100000,
                 location: pt
             });
         };          
