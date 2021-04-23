@@ -26,15 +26,17 @@ WildRydes.map = WildRydes.map || {};
 
         var wrMap = WildRydes.map;
 
-        var map = new Map({ basemap: 'streets' });
+        var map = new Map({ 
+            basemap: 'streets',
+            sliderPosition: "bottom-right"
+        });
 
         var view = new MapView({
             center: [-122.31, 47.60],
             container: 'map',
             map: map,
             //center: [33.23036,-97.132902],
-            zoom: 12,
-            sliderPosition: "bottom-right",
+            zoom: 12 
         });
 
         var locatorTask = new Locator({
