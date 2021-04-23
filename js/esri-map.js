@@ -25,10 +25,6 @@ WildRydes.map = WildRydes.map || {};
 
         var map = new Map({ basemap: 'streets' });
 
-        var locatorTask = new Locator({
-            url: "http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"
-        });
-
         var view = new MapView({
             center: [-122.31, 47.60],
             container: 'map',
@@ -36,7 +32,9 @@ WildRydes.map = WildRydes.map || {};
             zoom: 12
         });
 
-        
+        var locatorTask = new Locator({
+            url: "http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"
+        });
 
         var pinSymbol = new TextSymbol({
             color: '#f50856',
@@ -92,7 +90,7 @@ WildRydes.map = WildRydes.map || {};
 
             $(wrMap).trigger('pickupChange');    
 
-            locatorTask.locationToAddress(params)
+            locatorTask.locationToAddress(params, 100)
                 .then(function(response) { // Show the address found
                     const address = response.address;
                     showAddress(address, event.mapPoint);
