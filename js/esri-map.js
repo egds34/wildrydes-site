@@ -6,8 +6,8 @@ WildRydes.map = WildRydes.map || {};
 (function esriMapScopeWrapper($) {
     require([
         'esri/Map',
-        'esri/tasks/Locator',
-        'esri/views/MapView',       
+        'esri/views/MapView', 
+        'esri/tasks/Locator',      
         'esri/Graphic',
         'esri/geometry/Point',
         'esri/symbols/TextSymbol',
@@ -15,7 +15,7 @@ WildRydes.map = WildRydes.map || {};
         'esri/geometry/support/webMercatorUtils',
         'dojo/domReady!'
     ], function requireCallback(
-         Map, Locator, MapView,
+         Map, MapView, Locator,
         Graphic, Point, TextSymbol,
         PictureMarkerSymbol, webMercatorUtils
     ) {
