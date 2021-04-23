@@ -86,8 +86,7 @@ WildRydes.map = WildRydes.map || {};
 
             var pnt = new Point({
                 x: event.mapPoint.x,
-                y: event.mapPoint.y,
-                spatialReference: new SpatialReference({ wkid: 4326 })
+                y: event.mapPoint.y
             })
 
             $(wrMap).trigger('pickupChange');    
