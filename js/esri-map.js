@@ -18,7 +18,7 @@ WildRydes.map = WildRydes.map || {};
         'dojo/domReady!'
     ], function requireCallback(
         esriConfig, Map, MapView, Locator,
-        Graphic, Point, TextSymbol,
+        Search, Graphic, Point, TextSymbol,
         PictureMarkerSymbol, webMercatorUtils
     ) {
 
@@ -29,10 +29,9 @@ WildRydes.map = WildRydes.map || {};
         var map = new Map({ basemap: 'streets' });
 
         var view = new MapView({
-            center: [-122.31, 47.60],
+            center: [33.23036,-97.132902],
             container: 'map',
             map: map,
-            //center: [33.23036,-97.132902],
             zoom: 12
         });
 
